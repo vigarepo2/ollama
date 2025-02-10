@@ -2,12 +2,12 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2022
 
 # Set environment variables
-ENV NGROK_ZIP_URL=https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip^
-    NGROK_ZIP_PATH=C:\ngrok.zip^
-    NGROK_INSTALL_PATH=C:\ngrok^
-    NGROK_AUTH_TOKEN=2sqJ73Y2399qMylF1QD83UwANZZ_2ayshDPtaVWnKaCZ8KBJE^
-    RDP_USER=vikram^
-    RDP_PASSWORD=Vikram@123
+ENV NGROK_ZIP_URL=https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip
+ENV NGROK_ZIP_PATH=C:\ngrok.zip
+ENV NGROK_INSTALL_PATH=C:\ngrok
+ENV NGROK_AUTH_TOKEN=2sqJ73Y2399qMylF1QD83UwANZZ_2ayshDPtaVWnKaCZ8KBJE
+ENV RDP_USER=vikram
+ENV RDP_PASSWORD=Vikram@123
 
 # Download ngrok
 RUN powershell -Command `
