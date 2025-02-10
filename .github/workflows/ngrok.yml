@@ -15,12 +15,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Build Docker Image
-        run: docker build -t vigabots/ngrok:latest .
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
       - name: Log in to Docker Hub
-        run: |
-          echo "${{ github.event.inputs.dockerhub_password }}" | docker login --username vigabots --password-stdin
+        uses: docker/login-action@v2
+        with:
+          username: vigabots
+          password: ${{ github.event.inputs.dockerhub_password }}
 
-      - name: Push Docker Image
-        run: docker push vigabots/ngrok:latest
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: vigabots/ngrok:latest
